@@ -1,0 +1,234 @@
+@import url("reset.css");
+
+:root{
+    --moderate-cyan:hsl(176, 50%, 47%);
+    --dark-cyan:hsl(176, 72%, 28%);
+    --black:hsl(0, 0%, 0%);
+    --dark-gray:hsl(0, 0%, 48%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Commissioner";
+}
+
+button{
+    cursor: pointer;
+}
+
+body{
+    background-color: rgb(248, 247, 247);
+}
+
+header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#background-image{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.inner-header{
+    padding-top:2rem;
+    width: 87%;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Adding animation to the menu's icon */
+
+.menu{
+    position: relative;
+    width: 16px;
+    height: 15px;
+}
+
+.menu img{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    transform: opacity 1s ease-in-out , visibility 1s ease-in-out;
+}
+
+#closing-menu{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu.open #menu{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu.open #closing-menu{
+    opacity: 1;
+    visibility: visible;
+}
+
+@media screen and (min-width:50rem) {
+    .menu{
+        display: none;
+    }
+}
+
+/* Styling the navigation bar*/
+
+.nav-bar{
+    width: 100%;
+    padding: 1.3rem 0;
+
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 70px 100px 100px rgba(0,0,0,0.2);
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+
+    display: none;
+
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.nav-bar a{
+    padding:1.2rem;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+.nav-bar hr{
+    margin: 1.2rem 0;
+    border-color: white;
+    opacity: 0.3;
+}
+
+.nav-bar.open{
+    display: block;
+}
+
+@keyframes slide {
+    from {top:5rem;}
+    to {top:5.5rem;}
+}
+
+@media screen and (min-width:50rem) {
+    .inner-header{
+        width: 100%;
+        padding:3.2rem 11.5%;
+    }
+
+    .nav-bar{
+        padding:0;
+        width: fit-content;
+        background-color: transparent;
+        box-shadow: none;
+
+        display: flex;
+        gap:2rem;
+        position: initial;
+        transform: none;
+    }
+
+    .nav-bar hr{
+        display: none;
+    }
+
+    .nav-bar a{
+        padding:0;
+        color:white;
+    }
+}
+
+/* Styling the main container */
+    /* Styling the introduction container */
+
+main{
+    width: 87%;
+    max-width: 45.5rem;
+    
+    position: absolute;
+    top:15rem;
+    left:50%;
+    transform: translate(-50%);
+}
+
+.introduction-container{
+    position: relative;
+    padding:3rem 6% 2.5rem 6%;
+
+    background-color: white;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:1.5rem;
+}
+
+#logo{
+    position: absolute;
+    top:-1.7rem;
+    left:50%;
+    transform: translate(-50%);
+}
+
+.introduction-container h1{
+    font-size: 25px;
+}
+
+.introduction-container p{
+    color:var(--dark-gray);
+    font-size: 14px;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#back-project-button{
+    padding: 0 3rem;
+
+    color:white;
+    font-weight: 500;
+    background-color: var(--moderate-cyan);
+    border:none;
+    border-radius: 40px;
+}
+
+#back-project-button:hover{
+    background-color: var(--dark-cyan);
+}
+
+#book-mark-button{
+    width: 55px;
+
+    border-radius: 50%;
+    border: none;
+}
+
+@media screen and (min-width:50rem) {
+    main{
+        top:19.2rem;
+    }
+
+    .introduction-container{
+        padding:4rem 3rem 3rem 3rem;
+    }
+}
