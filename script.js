@@ -96,10 +96,12 @@ continueButton.forEach(button=>{
 
             backProjectContainer.classList.remove("active");
             thanksContainer.classList.add("active");
+            overlay.classList.add("active");
         }
     });
 });
 
 gotItButton.addEventListener("click",()=>{
     thanksContainer.classList.remove("active");
+    overlay.classList.remove("active");
 });
