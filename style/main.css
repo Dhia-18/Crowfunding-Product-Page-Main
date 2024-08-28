@@ -77,7 +77,7 @@ header{
     visibility: visible;
 }
 
-@media screen and (min-width:50rem) {
+@media screen and (min-width:45rem) {
     .menu{
         display: none;
     }
@@ -127,7 +127,7 @@ header{
     to {top:5.5rem;}
 }
 
-@media screen and (min-width:50rem) {
+@media screen and (min-width:45rem) {
     .inner-header{
         width: 100%;
         padding:3.2rem 11.5%;
@@ -166,6 +166,10 @@ main{
     top:15rem;
     left:50%;
     transform: translate(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
 }
 
 .introduction-container{
@@ -189,12 +193,12 @@ main{
 }
 
 .introduction-container h1{
-    font-size: 25px;
+    font-size: clamp(25px, 5vw , 28px);
 }
 
 .introduction-container p{
     color:var(--dark-gray);
-    font-size: 14px;
+    font-size: clamp(14px, 5vw,16px);
 }
 
 .buttons-container{
@@ -207,6 +211,7 @@ main{
 
     color:white;
     font-weight: 500;
+    font-size: 15px;
     background-color: var(--moderate-cyan);
     border:none;
     border-radius: 40px;
@@ -217,13 +222,29 @@ main{
 }
 
 #book-mark-button{
-    width: 55px;
-
+    height: 56px;
+    width: 56px;
     border-radius: 50%;
     border: none;
 }
 
-@media screen and (min-width:50rem) {
+#bookmark-status{
+    display: none;
+}
+
+.bookmark-container.active #circle-icon{
+    fill: var(--dark-cyan);
+}
+
+.bookmark-container.active #bookmark-icon{
+    fill: white;
+}
+
+#book-mark-button:hover{
+    opacity: 0.6;
+}
+
+@media screen and (min-width:45rem) {
     main{
         top:19.2rem;
     }
@@ -231,4 +252,531 @@ main{
     .introduction-container{
         padding:4rem 3rem 3rem 3rem;
     }
+
+    .introduction-container p{
+        margin-top: -1rem;
+    }
+
+    /* Styling the bookmark button */
+    
+    .bookmark-container{
+        cursor: pointer;
+        background-color: rgb(240, 240, 240);
+        border-radius: 27px;
+        color:var(--dark-gray);
+        font-weight: 700;
+        font-size: 14px;
+        padding-right: 1.5rem;
+
+
+        display: flex;
+        align-items: center;
+        gap:1rem;
+    }
+
+    #bookmark-status{
+        display: block;
+        margin-bottom: -0.5rem;
+    }
+
+    .bookmark-container.active #bookmark-status{
+        color:var(--dark-cyan);
+    }
+}
+
+    /* Styling the stats container */
+
+.progress-container{
+    padding:2rem 1rem;
+
+    background-color: white;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+}
+
+.stats-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.5rem;
+}
+
+.stats-container div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:0.5rem;
+}
+
+.stats-container p{
+    color:var(--dark-gray);
+}
+
+.stats-container hr{
+    width: 100px;
+    opacity: 0.5;
+}
+
+.progress-bar{
+    background-color: rgb(243, 243, 243);
+    border-radius: 20px;
+
+    height: 12px;
+}
+
+.current-progress{
+    background-color: var(--moderate-cyan);
+    border-radius: 20px;
+    width: 80%;
+    height: 100%;
+}
+
+@media screen and (min-width:45rem) {
+    .progress-container{
+        padding:3rem;
+    }
+
+    .stats-container{
+        flex-direction: row;
+    }
+
+    .stats-container hr{
+        rotate: 90deg;
+        width: 60px;
+    }
+}
+
+    /* Syling the about project's container */
+
+.about-project-container{
+    padding:2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+
+    background-color: white;
+    border-radius: 5px;
+}
+
+.about-project-container h2{
+    font-size: 19px;
+}
+
+.about-project-container p{
+    color:var(--dark-gray);
+    font-size: 15px;
+}
+
+.rewards-container{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+}
+
+.reward{
+    padding:1.5rem;
+    border:1px solid lightgray;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+    gap:1rem;
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    gap:0.2rem;
+}
+
+.product h3{
+    font-size: 16px;
+}
+
+.product p{
+    color:var(--moderate-cyan);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.products-left{
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+}
+
+.select-reward-button{
+    padding:1rem 2rem;
+    color:white;
+    font-weight: 500;
+    font-size: 15px;
+
+    background-color: var(--moderate-cyan);
+    border: none;
+    border-radius: 30px;
+}
+
+.select-reward-button:hover{
+    background-color:var(--dark-cyan);
+}
+
+.reward.out-of-stock{
+    opacity: 0.5;
+}
+
+.reward.out-of-stock .select-reward-button{
+    cursor: auto;
+    background-color: var(--dark-gray);
+}
+
+@media screen and (min-width:45rem) {
+    .about-project-container{
+        padding:3rem;
+    }
+
+    .reward{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+            'name name'
+            'text text'
+            'left button';
+    }
+
+    .product{
+        grid-area: name;
+
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .product-rewards{
+        grid-area: text;
+    }
+
+    .select-reward-button{
+        width: fit-content;
+        justify-self: last baseline;
+    }
+}
+
+    /* Styling the support container now */
+
+.support_text,.text{
+    color:var(--dark-gray);
+    font-size: 15px;
+}
+
+.back-project-container{
+    padding:1.5rem 1rem;
+    display: none;
+    flex-direction: column;
+    gap:1.5rem;
+
+    position: absolute;
+    top:-7.5rem;
+
+    background-color: white;
+    border-radius: 5px;
+}
+
+.back-project-container.active{
+    display: flex;
+}
+
+.back-project_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-project-container h1{
+    font-size: 19px;
+}
+
+#closing-menu-button{
+    cursor: pointer;
+}
+
+.support-container{
+    padding:1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+
+    border:1px solid lightgray;
+    border-radius: 5px;
+}
+
+.support_header{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+}
+
+#no-pledge-label{
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#no-pledge-label:hover{
+    color:var(--moderate-cyan);
+}
+
+.product-name{
+    display: flex;
+    flex-direction: column;
+    gap:0.3rem;
+}
+
+.product-name h2{
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.product-name h2:hover{
+    color:var(--moderate-cyan);
+}
+
+.product-name p{
+    color:var(--moderate-cyan);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+input[type="radio"]{
+    cursor: pointer;
+    appearance: none;
+    width: 1.3rem;
+    height: 1.3rem;
+    border:1px solid lightgray;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+}
+
+input[type="radio"]::before{
+    content: "";
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background-color: var(--moderate-cyan);
+    transform: scale(0);
+    transition: 0.12s transform ease-in-out;
+}
+
+input[type="radio"]:checked::before{
+    transform: scale(1);
+}
+
+.enter-pledge-container{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+}
+
+.enter-pledge-container.active{
+    display: flex;
+}
+
+.enter-pledge-container label{
+    color:var(--dark-gray);
+    font-size: 15px;
+}
+
+.enter-pledge-container hr{
+    width: calc(100% + 3rem);
+    opacity: 0.5;
+}
+
+.form-container{
+    position: relative;
+
+    display: flex;
+    gap:1rem;
+}
+
+.form-container input{
+    padding:0.8rem 0.8rem 0.8rem 2.5rem;
+    width:50%;
+    max-width: 115px;
+    font-weight: 700;
+
+    border:1px solid lightgray;
+    border-radius: 25px;
+}
+
+.form-container::before{
+    content: "$";
+    font-weight: 700;
+    color:lightgray;
+
+    position: absolute;
+    top:0.6rem;
+    left:1.5rem;
+}
+
+.form-container button{
+    padding:0.8rem 1rem;
+    width: 50%;
+    max-width: 125px;
+    color:white;
+    font-weight: 500;
+
+    background-color: var(--moderate-cyan);
+    border:none;
+    border-radius: 25px;
+}
+
+.form-container button:hover{
+    background-color: var(--dark-cyan);
+}
+
+.support-container.out-of-stock{
+    opacity: 0.5;
+}
+
+.support-container.out-of-stock input::before{
+    display: none;
+}
+
+@media screen and (min-width:45rem) {
+    .back-project-container{
+        padding:2rem;
+    }
+
+    .support-container{
+        display: grid;
+        grid-template-areas: 
+            'header left'
+            'text text'
+            'enter enter';
+    }
+
+    .first-support{
+        display: grid;
+        grid-template-areas:
+            'header header'
+            'text text'
+            'enter enter';
+    }
+
+    .support_header{
+        grid-area: header;
+    }
+
+    .support_text{
+        margin-left: 2.3rem;
+    }
+
+    .products-left{
+        grid-area: left;
+    }
+
+    .product-name{
+        flex-direction: row;
+        gap:1rem;
+    }
+
+    .enter-pledge-container{
+        grid-area: enter;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            'hr hr'
+            'enter buttons';
+    }
+
+    .enter-pledge-container hr{
+        grid-area: hr;
+        justify-self: center;
+    }
+
+    .form-container{
+        justify-self: end;
+    }
+
+    .enter-pledge-container.active{
+        display: grid;
+    }
+}
+
+/* Styling the thanks container */
+
+.thanks-container{
+    padding:2rem 1rem;
+    width: 100%;
+    max-width: 31rem;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap:1.5rem;
+
+    position: absolute;
+    top:-6rem;
+    left:50%;
+    transform: translate(-50%);
+
+    background-color: white;
+    border-radius: 5px;
+}
+
+.thanks-container.active{
+    display: flex;
+}
+
+.thanks-container h2{
+    font-size: 19px;
+}
+
+.thanks-container p{
+    color:var(--dark-gray);
+    font-size: 15px;
+}
+
+.thanks-container button{
+    padding:1rem 2rem;
+    color:white;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: var(--moderate-cyan);
+    border: none;
+    border-radius: 30px;
+}
+
+.thanks-container button:hover{
+    background-color: var(--dark-cyan);
+}
+
+@media screen and (min-width:45rem) {
+    .thanks-container{
+        padding:2rem;
+        top:9rem;
+    }
+}
+
+.overlay{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+.overlay.active{
+    display: block;
 }
